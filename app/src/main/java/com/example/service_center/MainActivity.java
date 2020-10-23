@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity{
         //This is delay for timeout
     }
 
-    public void nmk(String usern, String s1, String s2) {
+    public void ChkUser(String usern, String s1, String s2) {
         if (usern.equals(s1)){
             Toast.makeText(getApplicationContext(), "Пользователь 1", Toast.LENGTH_SHORT).show();
             Intent home = new Intent(MainActivity.this,MainActivity2.class);
@@ -95,13 +95,10 @@ public class MainActivity extends AppCompatActivity{
                 String s1 = new String("admin");
                 String s2 = new String("user1");
 
-
                 Boolean ChkUserPassw = db.userpassw(username,passw);
 
-
-
                 if(ChkUserPassw==true){
-                    nmk(username1, s1, s2);
+                    ChkUser(username1, s1, s2);
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Ошибка входа", Toast.LENGTH_SHORT).show();
