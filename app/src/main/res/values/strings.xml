@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">СЕРВИС-ЦЕНТР</string>
+    <string name="item1">Item1</string>
+    <string name="item2">Item2</string>
+    <string name="menu_name">Свойства</string>
+    <string name="ad1">Название заказа</string>
+    <string name="ad2">Ф.И.О</string>
+    <string name="ad3">Номер месяца</string>
+    <string name="ad4">Номер дня</string>
+    <string name="ad5">Номер гарантии</string>
+    <string name="ad6">Оплата заказа</string>
+    <string name="ad7">Выполнение заказа</string>
+    <string name="ad8">Информация о заказе</string>
+    <string name="ad11">Добавить заказ</string>
+    <string name="ad12">Обновить заказ</string>
+    <string name="ad13">Удалить заказ</string>
+    <string name="ad14">Удалить все заказы</string>
+    <string name="ad15">Добавление заказа</string>
+    <string name="ad16">Список всех заказов</string>
+    <string name="ad17">ПН</string>
+    <string name="ad18">ВТ</string>
+    <string name="ad19">СР</string>
+    <string name="ad20">ЧТ</string>
+    <string name="ad21">ПТ</string>
+    <string name="ad22">Добавьте заказ</string>
+    <string name="ad23">Выполненые</string>
+    <string name="ad24">Невыполненые</string>
+    <string name="ad25">Оплаченные</string>
+    <string name="ad26">Неоплаченные</string>
+    <string name="ad27">Название заказа:</string>
+    <string name="ad28">Номер месяца:</string>
+    <string name="ad29">Номер дня:</string>
+    <string name="ad30">Цена:</string>
+    <string name="ad31">Выполнение заказа:</string>
+    <string name="ad32">Оплата заказа:</string>
+    <string name="ad33">Гарантия:</string>
+    <string name="ad34">Владелец:</string>
+    <string name="adf35">ПОЛЬЗОВАТЕЛЬ</string>
+    <string name="adf36">ПАРОЛЬ</string>
+    <string name="adf37">ВОЙТИ</string>
+
+    <string name="name_act_user">Заказы текущего месяца</string>
+    <string name="name_act_user1">Все заказы</string>
+
+
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+
+</resources>
