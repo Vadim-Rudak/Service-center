@@ -111,7 +111,6 @@
                 android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="20sp"
-
                 app:met_floatingLabel="highlight"
                 app:met_singleLineEllipsis="true" />
 
