@@ -3,6 +3,7 @@ package com.example.service_center;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,7 +12,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;
 
@@ -30,6 +35,8 @@ public class MainActivity3 extends AppCompatActivity {
     FloatingActionButton add_button;
     ImageView empty_imageview;
     TextView no_data;
+    DrawerLayout rt;
+
 
     MyDatabaseHelper myDB;
     ArrayList<String> Order_id, Order_name, Customer, Month_number, Day_number, Warranty, Payment, Performance;
@@ -40,6 +47,8 @@ public class MainActivity3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
+
+
         recyclerView = findViewById(R.id.recyclerView);
         add_button = findViewById(R.id.add_button);
         empty_imageview = findViewById(R.id.empty_imageview);
@@ -47,10 +56,11 @@ public class MainActivity3 extends AppCompatActivity {
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity3.this, AddActivity.class);
-                startActivity(intent);
+                fabon();
             }
         });
+
+
 
         myDB = new MyDatabaseHelper(MainActivity3.this);
         Order_id = new ArrayList<>();
@@ -98,6 +108,84 @@ public class MainActivity3 extends AppCompatActivity {
             empty_imageview.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);
         }
+    }
+
+    private void fabon(){
+        final AlertDialog.Builder fbn = new AlertDialog.Builder(this);
+        fbn.setTitle("Добавление заказа");
+        fbn.setMessage("Введите все данные для добавления заказа");
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View fl1 = inflater.inflate(R.layout.plus_window, null);
+        fbn.setView(fl1);
+
+
+
+        final MaterialEditText Order_name_input = fl1.findViewById(R.id.fg1);
+        final MaterialEditText Customer_input = fl1.findViewById(R.id.fg2);
+        final MaterialEditText Month_number_input = fl1.findViewById(R.id.fg3);
+        final MaterialEditText Day_number_input = fl1.findViewById(R.id.fg4);
+        final MaterialEditText Warranty_input = fl1.findViewById(R.id.fg5);
+        final MaterialEditText Payment_input = fl1.findViewById(R.id.fg6);
+        final MaterialEditText Performance_input = fl1.findViewById(R.id.fg7);
+
+        fbn.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+
+
+        fbn.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (TextUtils.isEmpty(Order_name_input.getText().toString())){
+                    Snackbar.make(rt,"Введите название заказа", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(Customer_input.getText().toString())){
+                    Snackbar.make(rt,"Введите дату", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(Month_number_input.getText().toString())){
+                    Snackbar.make(rt,"Введите подробности о заказе", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(Day_number_input.getText().toString())){
+                    Snackbar.make(rt,"Введите подробности о заказе", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(Warranty_input.getText().toString())){
+                    Snackbar.make(rt,"Введите подробности о заказе", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(Payment_input.getText().toString())){
+                    Snackbar.make(rt,"Введите подробности о заказе", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(Performance_input.getText().toString())){
+                    Snackbar.make(rt,"Введите подробности о заказе", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
+
+                MyDatabaseHelper myDB = new MyDatabaseHelper(MainActivity3.this);
+                myDB.addOrder(Order_name_input.getText().toString().trim(),
+                        Customer_input.getText().toString().trim(),
+                        Integer.valueOf(Month_number_input.getText().toString().trim()),
+                        Integer.valueOf(Day_number_input.getText().toString().trim()),
+                        Integer.valueOf(Warranty_input.getText().toString().trim()),
+                        Integer.valueOf(Payment_input.getText().toString().trim()),
+                        Integer.valueOf(Performance_input.getText().toString().trim()));
+
+                Intent intent = new Intent(MainActivity3.this, MainActivity3.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        fbn.show();
     }
 
     @Override
