@@ -25,14 +25,14 @@
                     android:layout_width="92dp"
                     android:layout_height="193dp"
                     android:layout_weight="1"
-                    android:background="@drawable/mnk1" />
+                    android:background="@drawable/ck_but1" />
 
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="92dp"
                     android:layout_height="193dp"
                     android:layout_weight="1"
-                    android:background="@drawable/mnk2" />
+                    android:background="@drawable/ck_but2" />
             </LinearLayout>
 
             <LinearLayout
@@ -45,14 +45,14 @@
                     android:layout_width="92dp"
                     android:layout_height="193dp"
                     android:layout_weight="1"
-                    android:background="@drawable/mnk3" />
+                    android:background="@drawable/ck_but3" />
 
                 <Button
                     android:id="@+id/button4"
                     android:layout_width="92dp"
                     android:layout_height="193dp"
                     android:layout_weight="1"
-                    android:background="@drawable/mnk4" />
+                    android:background="@drawable/ck_but4" />
             </LinearLayout>
 
             <LinearLayout
@@ -65,14 +65,14 @@
                     android:layout_width="92dp"
                     android:layout_height="193dp"
                     android:layout_weight="1"
-                    android:background="@drawable/mnk5" />
+                    android:background="@drawable/ck_but5" />
 
                 <Button
                     android:id="@+id/button6"
                     android:layout_width="92dp"
                     android:layout_height="193dp"
                     android:layout_weight="1"
-                    android:background="@drawable/mnk6" />
+                    android:background="@drawable/ck_but6" />
             </LinearLayout>
 
             <LinearLayout
@@ -85,14 +85,14 @@
                     android:layout_width="92dp"
                     android:layout_height="193dp"
                     android:layout_weight="1"
-                    android:background="@drawable/mnk7" />
+                    android:background="@drawable/ck_but7" />
 
                 <Button
                     android:id="@+id/button8"
                     android:layout_width="92dp"
                     android:layout_height="193dp"
                     android:layout_weight="1"
-                    android:background="@drawable/mnk8" />
+                    android:background="@drawable/ck_but8" />
             </LinearLayout>
 
             <LinearLayout
@@ -105,14 +105,14 @@
                     android:layout_width="92dp"
                     android:layout_height="193dp"
                     android:layout_weight="1"
-                    android:background="@drawable/mnk9" />
+                    android:background="@drawable/ck_but9" />
 
                 <Button
                     android:id="@+id/button10"
                     android:layout_width="92dp"
                     android:layout_height="193dp"
                     android:layout_weight="1"
-                    android:background="@drawable/mnk10" />
+                    android:background="@drawable/ck_but10" />
             </LinearLayout>
 
             <LinearLayout
@@ -125,14 +125,14 @@
                     android:layout_width="92dp"
                     android:layout_height="193dp"
                     android:layout_weight="1"
-                    android:background="@drawable/mnk11" />
+                    android:background="@drawable/ck_but11" />
 
                 <Button
                     android:id="@+id/button12"
                     android:layout_width="92dp"
                     android:layout_height="193dp"
                     android:layout_weight="1"
-                    android:background="@drawable/mnk12" />
+                    android:background="@drawable/ck_but12" />
             </LinearLayout>
 
 
