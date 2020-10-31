@@ -49,8 +49,8 @@ public class fragment_main22 extends ListFragment {
         try {
             sqlHelper.open();
             userCursor = sqlHelper.database.rawQuery("select * from " + MyDatabaseHelper.TABLE_NAME + " where Month_number ="+pagesID+" and Performance=0", null);
-            String[] headers = new String[]{MyDatabaseHelper.COLUMN_ORDER};
-            userAdapter = new SimpleCursorAdapter(getActivity(), R.layout.item, userCursor, headers, new int[]{R.id.uroki},0);
+            String[] headers = new String[]{MyDatabaseHelper.COLUMN_ORDER, MyDatabaseHelper.COLUMN_PERFORMANCE, MyDatabaseHelper.COLUMN_PAYMENT, MyDatabaseHelper.COLUMN_WARRANTY};
+            userAdapter = new SimpleCursorAdapter(getActivity(), R.layout.item, userCursor, headers, new int[]{R.id.Order2, R.id.Performance2, R.id.Payment2, R.id.Warranty2},0);
             mList.setAdapter(userAdapter);
 
         }

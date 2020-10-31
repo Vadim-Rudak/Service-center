@@ -26,14 +26,14 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
     private static String DB_PATH;
 
     static final String TABLE_NAME = "Formation_order";
-    private static final String COLUMN_ID = "_id";
+    public static final String COLUMN_ID = "_id";
     public static final String COLUMN_ORDER = "Order_name";
-    private static final String COLUMN_CUSTOMER = "Customer";
+    public static final String COLUMN_CUSTOMER = "Customer";
     public static final String COLUMN_MONTH = "Month_number";
     private static final String COLUMN_DAY = "Day_number";
-    private static final String COLUMN_WARRANTY = "Warranty";
-    private static final String COLUMN_PAYMENT = "Payment";
-    private static final String COLUMN_PERFORMANCE = "Performance";
+    public static final String COLUMN_WARRANTY = "Warranty";
+    public static final String COLUMN_PAYMENT = "Payment";
+    public static final String COLUMN_PERFORMANCE = "Performance";
 
     MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
