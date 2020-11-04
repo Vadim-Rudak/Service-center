@@ -80,6 +80,11 @@ public class MainActivity4 extends AppCompatActivity {
                 intent42.putExtras(b);
                 startActivity(intent42);
                 return true;
+            case R.id.item43:
+                Intent intent43 = new Intent();
+                intent43.setClass(MainActivity4.this, Edit_user2.class);
+                startActivity(intent43);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

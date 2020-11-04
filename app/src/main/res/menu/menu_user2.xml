@@ -16,4 +16,11 @@
         app:showAsAction="always">
     </item>
 
+    <item
+        android:id="@+id/item43"
+        android:icon="@drawable/edit4"
+        android:title="@string/item2"
+        app:showAsAction="always">
+    </item>
+
 </menu>
