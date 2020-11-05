@@ -2,8 +2,7 @@ package com.example.service_center;
 
 import android.content.ContentValues;
         import android.content.Context;
-import android.content.Intent;
-import android.database.Cursor;
+        import android.database.Cursor;
         import android.database.sqlite.SQLiteDatabase;
         import android.database.sqlite.SQLiteOpenHelper;
         import android.util.Log;
@@ -19,7 +18,7 @@ import java.sql.SQLException;
 
 class MyDatabaseHelper extends SQLiteOpenHelper {
 
-    public Context context;
+    private Context context;
     public SQLiteDatabase database;
 
     private static final String DATABASE_NAME = "Serv.sqlite";
@@ -35,6 +34,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_WARRANTY = "Warranty";
     public static final String COLUMN_PAYMENT = "Payment";
     public static final String COLUMN_PERFORMANCE = "Performance";
+    public static final String COLUMN_OTHER = "Other";
 
     MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -52,7 +52,8 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_DAY + " INTEGER, " +
                 COLUMN_WARRANTY + " INTEGER, " +
                 COLUMN_PAYMENT + " INTEGER, " +
-                COLUMN_PERFORMANCE + " INTEGER);";
+                COLUMN_PERFORMANCE + " INTEGER, " +
+                COLUMN_OTHER + " TEXT);";
         db.execSQL(query);
     }
 
@@ -106,7 +107,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addOrder(String Order_name, String Customer, int Month_number, int Day_number, int Warranty, int Payment, int Performance){
+    void addOrder(String Order_name, String Customer, int Month_number, int Day_number, int Warranty, int Payment, int Performance, String Other){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -117,6 +118,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_WARRANTY, Warranty);
         cv.put(COLUMN_PAYMENT, Payment);
         cv.put(COLUMN_PERFORMANCE, Performance);
+        cv.put(COLUMN_OTHER, Other);
         long result = db.insert(TABLE_NAME,null, cv);
         if(result == -1){
             Toast.makeText(context, "Ошибка", Toast.LENGTH_SHORT).show();
@@ -136,7 +138,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    void updateData(String row_id, String Order_name, String Customer, String Month_number, String Day_number, String Warranty, String Payment, String Performance){
+    void updateData(String row_id, String Order_name, String Customer, String Month_number, String Day_number, String Warranty, String Payment, String Performance, String Other){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_ORDER, Order_name);
@@ -146,6 +148,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_WARRANTY, Warranty);
         cv.put(COLUMN_PAYMENT, Payment);
         cv.put(COLUMN_PERFORMANCE, Performance);
+        cv.put(COLUMN_OTHER, Other);
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if(result == -1){
@@ -156,8 +159,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-
-    void updateData2(String row_id, String Order_name, String Day_number, String Warranty, String Payment, String Performance){
+    void updateData2(String row_id, String Order_name, String Day_number, String Warranty, String Payment, String Performance, String Other){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_ORDER, Order_name);
@@ -165,6 +167,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_WARRANTY, Warranty);
         cv.put(COLUMN_PAYMENT, Payment);
         cv.put(COLUMN_PERFORMANCE, Performance);
+        cv.put(COLUMN_OTHER, Other);
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if(result == -1){
@@ -175,11 +178,10 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    void updateData3(String row_id, String Order_name){
+    void updateData3(String row_id, String Other){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_ORDER, Order_name);
-
+        cv.put(COLUMN_OTHER, Other);
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if(result == -1){
@@ -199,8 +201,6 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Заказ удалён", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 
     void deleteAllData(){
         SQLiteDatabase db = this.getWritableDatabase();

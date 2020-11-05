@@ -22,10 +22,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     private Context context;
     private Activity activity;
-    private ArrayList Order_id, Order_name, Customer, Month_number, Day_number, Warranty, Payment, Performance;
+    private ArrayList Order_id, Order_name, Customer, Month_number, Day_number, Warranty, Payment, Performance, Other;
 
     CustomAdapter(Activity activity, Context context, ArrayList Order_id, ArrayList Order_name, ArrayList Customer,
-                  ArrayList Month_number, ArrayList Day_number, ArrayList Warranty, ArrayList Payment, ArrayList Performance){
+                  ArrayList Month_number, ArrayList Day_number, ArrayList Warranty, ArrayList Payment, ArrayList Performance, ArrayList Other){
         this.activity = activity;
         this.context = context;
         this.Order_id = Order_id;
@@ -36,6 +36,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         this.Warranty = Warranty;
         this.Payment = Payment;
         this.Performance = Performance;
+        this.Other = Other;
     }
 
     @NonNull
@@ -57,6 +58,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.Warranty_txt.setText(String.valueOf(Warranty.get(position)));
         holder.Payment_txt.setText(String.valueOf(Payment.get(position)));
         holder.Performance_txt.setText(String.valueOf(Performance.get(position)));
+        holder.Other_txt.setText(String.valueOf(Other.get(position)));
         //Recyclerview onClickListener
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +72,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 intent.putExtra("Warranty", String.valueOf(Warranty.get(position)));
                 intent.putExtra("Payment", String.valueOf(Payment.get(position)));
                 intent.putExtra("Performance", String.valueOf(Performance.get(position)));
+                intent.putExtra("Other", String.valueOf(Other.get(position)));
                 activity.startActivityForResult(intent, 1);
             }
         });
@@ -84,7 +87,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView Order_id_txt, Order_name_txt, Customer_txt, Month_number_txt, Day_number_txt, Warranty_txt, Payment_txt, Performance_txt;
+        TextView Order_id_txt, Order_name_txt, Customer_txt, Month_number_txt, Day_number_txt, Warranty_txt, Payment_txt, Performance_txt, Other_txt;
         LinearLayout mainLayout;
 
         MyViewHolder(@NonNull View itemView) {
@@ -97,6 +100,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             Warranty_txt = itemView.findViewById(R.id.Warranty_txt);
             Payment_txt = itemView.findViewById(R.id.Payment_txt);
             Performance_txt = itemView.findViewById(R.id.Performance_txt);
+            Other_txt = itemView.findViewById(R.id.Other_txt);
             mainLayout = itemView.findViewById(R.id.mainLayout);
             //Animate Recyclerview
             Animation translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);

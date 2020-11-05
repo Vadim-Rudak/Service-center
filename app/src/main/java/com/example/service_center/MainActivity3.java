@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -36,7 +39,7 @@ public class MainActivity3 extends AppCompatActivity {
 
 
     MyDatabaseHelper myDB;
-    ArrayList<String> Order_id, Order_name, Customer, Month_number, Day_number, Warranty, Payment, Performance;
+    ArrayList<String> Order_id, Order_name, Customer, Month_number, Day_number, Warranty, Payment, Performance, Other;
     CustomAdapter customAdapter;
 
     @Override
@@ -46,7 +49,7 @@ public class MainActivity3 extends AppCompatActivity {
 
 
 
-        recyclerView = findViewById(R.id.recyclerView2);
+        recyclerView = findViewById(R.id.recyclerView);
         add_button = findViewById(R.id.add_button);
         empty_imageview = findViewById(R.id.empty_imageview);
         no_data = findViewById(R.id.no_data);
@@ -68,11 +71,12 @@ public class MainActivity3 extends AppCompatActivity {
         Warranty = new ArrayList<>();
         Payment = new ArrayList<>();
         Performance = new ArrayList<>();
+        Other = new ArrayList<>();
 
         storeDataInArrays();
 
         customAdapter = new CustomAdapter(MainActivity3.this,this, Order_id, Order_name, Customer,
-                Month_number, Day_number, Warranty, Payment, Performance);
+                Month_number, Day_number, Warranty, Payment, Performance, Other);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity3.this));
 
@@ -101,6 +105,7 @@ public class MainActivity3 extends AppCompatActivity {
                 Warranty.add(cursor.getString(5));
                 Payment.add(cursor.getString(6));
                 Performance.add(cursor.getString(7));
+                Other.add(cursor.getString(8));
             }
             empty_imageview.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);
@@ -125,6 +130,7 @@ public class MainActivity3 extends AppCompatActivity {
         final MaterialEditText Warranty_input = fl1.findViewById(R.id.fg5);
         final MaterialEditText Payment_input = fl1.findViewById(R.id.fg6);
         final MaterialEditText Performance_input = fl1.findViewById(R.id.fg7);
+        final MaterialEditText Other_input = fl1.findViewById(R.id.fg8);
 
         fbn.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
             @Override
@@ -166,6 +172,10 @@ public class MainActivity3 extends AppCompatActivity {
                     Snackbar.make(rt,"Введите подробности о заказе", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
+                if (TextUtils.isEmpty(Other_input.getText().toString())){
+                    Snackbar.make(rt,"Введите подробности о заказе", Snackbar.LENGTH_SHORT).show();
+                    return;
+                }
 
                 MyDatabaseHelper myDB = new MyDatabaseHelper(MainActivity3.this);
                 myDB.addOrder(Order_name_input.getText().toString().trim(),
@@ -174,7 +184,8 @@ public class MainActivity3 extends AppCompatActivity {
                         Integer.valueOf(Day_number_input.getText().toString().trim()),
                         Integer.valueOf(Warranty_input.getText().toString().trim()),
                         Integer.valueOf(Payment_input.getText().toString().trim()),
-                        Integer.valueOf(Performance_input.getText().toString().trim()));
+                        Integer.valueOf(Performance_input.getText().toString().trim()),
+                        Other_input.getText().toString().trim());
 
                 Intent intent = new Intent(MainActivity3.this, MainActivity3.class);
                 startActivity(intent);

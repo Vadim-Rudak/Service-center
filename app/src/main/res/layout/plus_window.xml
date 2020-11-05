@@ -114,6 +114,18 @@
                 app:met_floatingLabel="highlight"
                 app:met_singleLineEllipsis="true" />
 
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/fg8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ad8"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                app:met_floatingLabel="highlight"
+                app:met_singleLineEllipsis="true" />
 
         </LinearLayout>
     </ScrollView>

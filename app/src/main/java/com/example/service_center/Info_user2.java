@@ -12,54 +12,48 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Info_order extends AppCompatActivity {
+public class Info_user2 extends AppCompatActivity {
 
-    EditText Order_name_input;
+    EditText Other_input;
     Button update_button;
 
-    String id, Order_name;
+    String id, Other;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info_order);
+        setContentView(R.layout.info_user2);
 
-        Order_name_input = findViewById(R.id.Order_name_input2);
+        Other_input = findViewById(R.id.Other_input3);
         update_button = findViewById(R.id.update_button);
-
 
         //First we call this
         getAndSetIntentData();
 
         //Set actionbar title after getAndSetIntentData method
-        ActionBar ab = getSupportActionBar();
-        if (ab != null) {
-            ab.setTitle(Order_name);
-        }
+
 
         update_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //And only then we call this
-                MyDatabaseHelper myDB = new MyDatabaseHelper(Info_order.this);
-                Order_name = Order_name_input.getText().toString().trim();
-                myDB.updateData3(id, Order_name);
+                MyDatabaseHelper myDB = new MyDatabaseHelper(Info_user2.this);
+                Other = Other_input.getText().toString().trim();
+                myDB.updateData3(id, Other);
             }
         });
 
     }
 
     void getAndSetIntentData(){
-        if(getIntent().hasExtra("id") && getIntent().hasExtra("Order_name")){
+        if(getIntent().hasExtra("id")&& getIntent().hasExtra("Other")){
             //Getting Data from Intent
             id = getIntent().getStringExtra("id");
-            Order_name = getIntent().getStringExtra("Order_name");
-
+            Other = getIntent().getStringExtra("Other");
 
             //Setting Intent Data
-            Order_name_input.setText(Order_name);
-
-            Log.d("stev", Order_name);
+            Other_input.setText(Other);
+            Log.d("stev", Other);
         }else{
             Toast.makeText(this, "Нет данных", Toast.LENGTH_SHORT).show();
         }
