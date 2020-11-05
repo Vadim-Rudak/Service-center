@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Edit_user2"></activity>
+        <activity android:name=".Info_order"></activity>
+        <activity android:name=".Edit_user2" />
         <activity android:name=".UpdateAct2" />
         <activity android:name=".fragment_main52" />
         <activity android:name=".fragment_main51" />

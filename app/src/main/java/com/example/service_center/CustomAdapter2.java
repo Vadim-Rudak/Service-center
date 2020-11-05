@@ -73,6 +73,17 @@ public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.MyViewHo
                 activity.startActivityForResult(intent, 1);
             }
         });
+        holder.mainLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(context, Info_order.class);
+                intent.putExtra("id", String.valueOf(Order_id.get(position)));
+                intent.putExtra("Order_name", String.valueOf(Order_name.get(position)));
+                activity.startActivityForResult(intent, 1);
+                return false;
+            }
+        });
+
 
 
     }

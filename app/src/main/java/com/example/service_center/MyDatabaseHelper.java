@@ -2,7 +2,8 @@ package com.example.service_center;
 
 import android.content.ContentValues;
         import android.content.Context;
-        import android.database.Cursor;
+import android.content.Intent;
+import android.database.Cursor;
         import android.database.sqlite.SQLiteDatabase;
         import android.database.sqlite.SQLiteOpenHelper;
         import android.util.Log;
@@ -18,7 +19,7 @@ import java.sql.SQLException;
 
 class MyDatabaseHelper extends SQLiteOpenHelper {
 
-    private Context context;
+    public Context context;
     public SQLiteDatabase database;
 
     private static final String DATABASE_NAME = "Serv.sqlite";
@@ -174,6 +175,20 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    void updateData3(String row_id, String Order_name){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_ORDER, Order_name);
+
+
+        long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
+        if(result == -1){
+            Toast.makeText(context, "Ошибка обновления заказа", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Заказ обновлён!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
     void deleteOneRow(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -183,6 +198,10 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         }else{
             Toast.makeText(context, "Заказ удалён", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    void ddv(int bbg){
+        Toast.makeText(context, "Активити "+bbg, Toast.LENGTH_SHORT).show();
     }
 
     void deleteAllData(){
