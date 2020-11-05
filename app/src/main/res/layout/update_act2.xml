@@ -35,32 +35,6 @@
                 android:paddingStart="12dp" />
 
             <EditText
-                android:id="@+id/Customer_input2"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/custom_inp"
-                android:drawableStart="@drawable/custom_up2"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:hint="@string/ad2"
-                android:inputType="textPersonName"
-                android:paddingStart="12dp" />
-
-            <EditText
-                android:id="@+id/Month_number_input2"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/custom_inp"
-                android:drawableStart="@drawable/custom_up3"
-                android:drawablePadding="12dp"
-                android:ems="10"
-                android:hint="@string/ad3"
-                android:inputType="number"
-                android:paddingStart="12dp" />
-
-            <EditText
                 android:id="@+id/Day_number_input2"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -123,16 +97,6 @@
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/delete_button"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/custom_buttom_up"
-                android:text="@string/ad13"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
 

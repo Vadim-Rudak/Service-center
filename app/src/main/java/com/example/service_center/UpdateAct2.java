@@ -14,10 +14,10 @@ import android.widget.Toast;
 
 public class UpdateAct2 extends AppCompatActivity {
 
-    EditText Order_name_input, Customer_input, Month_number_input, day_input, Warranty_input, Payment_input, Performance_input;
-    Button update_button, delete_button;
+    EditText Order_name_input, day_input, Warranty_input, Payment_input, Performance_input;
+    Button update_button;
 
-    String id, Order_name, Customer, Month_number, Day_number, Warranty, Payment, Performance;
+    String id, Order_name, Day_number, Warranty, Payment, Performance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +25,12 @@ public class UpdateAct2 extends AppCompatActivity {
         setContentView(R.layout.update_act2);
 
         Order_name_input = findViewById(R.id.Order_name_input2);
-        Customer_input = findViewById(R.id.Customer_input2);
-        Month_number_input = findViewById(R.id.Month_number_input2);
         day_input = findViewById(R.id.Day_number_input2);
         Warranty_input = findViewById(R.id.Warranty_input2);
         Payment_input = findViewById(R.id.Payment_input2);
         Performance_input = findViewById(R.id.Performance_input2);
         update_button = findViewById(R.id.update_button);
-        delete_button = findViewById(R.id.delete_button);
+
 
         //First we call this
         getAndSetIntentData();
@@ -49,19 +47,11 @@ public class UpdateAct2 extends AppCompatActivity {
                 //And only then we call this
                 MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateAct2.this);
                 Order_name = Order_name_input.getText().toString().trim();
-                Customer = Customer_input.getText().toString().trim();
-                Month_number = Month_number_input.getText().toString().trim();
                 Day_number = day_input.getText().toString().trim();
                 Warranty = Warranty_input.getText().toString().trim();
                 Payment = Payment_input.getText().toString().trim();
                 Performance = Performance_input.getText().toString().trim();
-                myDB.updateData(id, Order_name, Customer, Month_number, Day_number, Warranty, Payment, Performance);
-            }
-        });
-        delete_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                confirmDialog();
+                myDB.updateData2(id, Order_name, Day_number, Warranty, Payment, Performance);
             }
         });
 
@@ -69,14 +59,11 @@ public class UpdateAct2 extends AppCompatActivity {
 
     void getAndSetIntentData(){
         if(getIntent().hasExtra("id") && getIntent().hasExtra("Order_name") &&
-                getIntent().hasExtra("Customer") && getIntent().hasExtra("Month_number")&&
                 getIntent().hasExtra("Day_number")&& getIntent().hasExtra("Warranty")&&
                 getIntent().hasExtra("Payment")&& getIntent().hasExtra("Performance")){
             //Getting Data from Intent
             id = getIntent().getStringExtra("id");
             Order_name = getIntent().getStringExtra("Order_name");
-            Customer = getIntent().getStringExtra("Customer");
-            Month_number = getIntent().getStringExtra("Month_number");
             Day_number = getIntent().getStringExtra("Day_number");
             Warranty = getIntent().getStringExtra("Warranty");
             Payment = getIntent().getStringExtra("Payment");
@@ -84,36 +71,13 @@ public class UpdateAct2 extends AppCompatActivity {
 
             //Setting Intent Data
             Order_name_input.setText(Order_name);
-            Customer_input.setText(Customer);
-            Month_number_input.setText(Month_number);
             day_input.setText(Day_number);
             Warranty_input.setText(Warranty);
             Payment_input.setText(Payment);
             Performance_input.setText(Performance);
-            Log.d("stev", Order_name+" "+Customer+" "+Month_number+" "+Day_number+" "+Warranty+" "+Payment+" "+Performance);
+            Log.d("stev", Order_name+" "+Day_number+" "+Warranty+" "+Payment+" "+Performance);
         }else{
             Toast.makeText(this, "Нет данных", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    void confirmDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Удалить заказ " + Order_name + " ?");
-        builder.setMessage("Вы действительно хотите удалить заказ " + Order_name + " ?");
-        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateAct2.this);
-                myDB.deleteOneRow(id);
-                finish();
-            }
-        });
-        builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        builder.create().show();
     }
 }

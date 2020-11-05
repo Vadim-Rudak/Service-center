@@ -155,6 +155,26 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+
+    void updateData2(String row_id, String Order_name, String Day_number, String Warranty, String Payment, String Performance){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_ORDER, Order_name);
+        cv.put(COLUMN_DAY, Day_number);
+        cv.put(COLUMN_WARRANTY, Warranty);
+        cv.put(COLUMN_PAYMENT, Payment);
+        cv.put(COLUMN_PERFORMANCE, Performance);
+
+        long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
+        if(result == -1){
+            Toast.makeText(context, "Ошибка обновления заказа", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Заказ обновлён!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
     void deleteOneRow(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
