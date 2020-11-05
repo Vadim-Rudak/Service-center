@@ -200,9 +200,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    void ddv(int bbg){
-        Toast.makeText(context, "Активити "+bbg, Toast.LENGTH_SHORT).show();
-    }
+
 
     void deleteAllData(){
         SQLiteDatabase db = this.getWritableDatabase();

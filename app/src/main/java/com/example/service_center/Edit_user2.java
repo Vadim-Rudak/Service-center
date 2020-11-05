@@ -76,37 +76,12 @@ public class Edit_user2 extends AppCompatActivity {
         recyclerView2.setAdapter(customAdapter2);
         recyclerView2.setLayoutManager(new LinearLayoutManager(Edit_user2.this));
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
 
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                openactinfo(viewHolder.getAdapterPosition());
-
-            }
-        }).attachToRecyclerView(recyclerView2);
 
     }
 
-    void openactinfo(int bbg){
-        bbg=bbg+1;
-        if(bbg >= 0){
-            myDB.ddv(bbg);
-            fnb();
 
-        }else{
-            
-        }
-    }
 
-    void fnb(){
-        Intent intent = new Intent(Edit_user2.this, Edit_user2.class);
-        startActivity(intent);
-        finish();
-    }
 
 
     @Override
