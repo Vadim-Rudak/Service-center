@@ -118,7 +118,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/custom_inp"
-                android:drawableStart="@drawable/custom_up7"
+                android:drawableStart="@drawable/custom_up8"
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="@string/ad8"

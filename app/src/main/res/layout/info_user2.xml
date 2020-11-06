@@ -24,14 +24,14 @@
             <EditText
                 android:id="@+id/Other_input3"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="407dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/custom_inp"
-                android:drawableStart="@drawable/custom_up7"
+                android:drawableStart="@drawable/custom_up8"
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="@string/ad8"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:paddingStart="12dp" />
 
             <Button

@@ -159,7 +159,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    void updateData2(String row_id, String Order_name, String Day_number, String Warranty, String Payment, String Performance, String Other){
+    void updateData2(String row_id, String Order_name, String Day_number, String Warranty, String Payment, String Performance){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_ORDER, Order_name);
@@ -167,7 +167,6 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_WARRANTY, Warranty);
         cv.put(COLUMN_PAYMENT, Payment);
         cv.put(COLUMN_PERFORMANCE, Performance);
-        cv.put(COLUMN_OTHER, Other);
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
         if(result == -1){

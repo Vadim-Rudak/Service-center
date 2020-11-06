@@ -66,7 +66,6 @@ public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.MyViewHo
                 intent.putExtra("Warranty", String.valueOf(Warranty.get(position)));
                 intent.putExtra("Payment", String.valueOf(Payment.get(position)));
                 intent.putExtra("Performance", String.valueOf(Performance.get(position)));
-                intent.putExtra("Other", String.valueOf(Other.get(position)));
                 activity.startActivityForResult(intent, 1);
             }
         });
