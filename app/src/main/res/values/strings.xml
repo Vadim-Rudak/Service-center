@@ -38,6 +38,7 @@
     <string name="adf35">ПОЛЬЗОВАТЕЛЬ</string>
     <string name="adf36">ПАРОЛЬ</string>
     <string name="adf37">ВОЙТИ</string>
+    <string name="ad35">Информация о заказе:</string>
 
     <string name="name_act_user">Заказы текущего месяца</string>
     <string name="name_act_user1">Все заказы</string>
