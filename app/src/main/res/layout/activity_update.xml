@@ -122,7 +122,7 @@
                 android:drawablePadding="12dp"
                 android:ems="10"
                 android:hint="@string/ad8"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:paddingStart="12dp" />
 
             <Button
@@ -146,6 +146,19 @@
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/pdf_button"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/custom_buttom_up"
+                android:onClick="createMyPDF"
+                android:text="@string/ad37"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
         </LinearLayout>
     </ScrollView>
 

@@ -3,20 +3,36 @@ package com.example.service_center;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
+import android.os.Environment;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class UpdateActivity extends AppCompatActivity {
 
     EditText Order_name_input, Customer_input, Month_number_input, day_input, Warranty_input, Payment_input, Performance_input, Other_input;
     Button update_button, delete_button;
 
+    private EditText editText,editText2;
     String id, Order_name, Customer, Month_number, Day_number, Warranty, Payment, Performance, Other;
 
     @Override
@@ -35,6 +51,10 @@ public class UpdateActivity extends AppCompatActivity {
         update_button = findViewById(R.id.update_button);
         delete_button = findViewById(R.id.delete_button);
 
+        ActivityCompat.requestPermissions(UpdateActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+
+        editText = findViewById(R.id.Other_input2);
+        editText2 = findViewById(R.id.Order_name_input2);
         //First we call this
         getAndSetIntentData();
 
@@ -68,6 +88,36 @@ public class UpdateActivity extends AppCompatActivity {
         });
 
     }
+
+    public void createMyPDF(View view){
+
+        PdfDocument myPdfDocument = new PdfDocument();
+        PdfDocument.PageInfo myPageInfo = new PdfDocument.PageInfo.Builder(300,600,1).create();
+        PdfDocument.Page myPage = myPdfDocument.startPage(myPageInfo);
+
+        Paint myPaint = new Paint();
+        String myString = editText.getText().toString();
+        int x = 10, y=25;
+        for (String line:myString.split("\n")){
+            myPage.getCanvas().drawText(line, x, y, myPaint);
+            y+=myPaint.descent()-myPaint.ascent();
+        }
+
+        myPdfDocument.finishPage(myPage);
+
+        String myFilePath = Environment.getExternalStorageDirectory().getPath() + "/Download/" + editText2.getText().toString()+".pdf";
+        File myFile = new File(myFilePath);
+        try {
+            myPdfDocument.writeTo(new FileOutputStream(myFile));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            editText.setText("ERROR");
+        }
+
+        myPdfDocument.close();
+    }
+
 
     void getAndSetIntentData(){
         if(getIntent().hasExtra("id") && getIntent().hasExtra("Order_name") &&

@@ -40,6 +40,7 @@
     <string name="adf37">ВОЙТИ</string>
     <string name="ad35">Информация о заказе:</string>
     <string name="ad36">Заказы не добавлены</string>
+    <string name="ad37">PDF</string>
 
     <string name="name_act_user">Заказы текущего месяца</string>
     <string name="name_act_user1">Все заказы</string>
