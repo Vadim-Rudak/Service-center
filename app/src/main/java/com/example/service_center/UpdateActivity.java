@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,7 +33,7 @@ public class UpdateActivity extends AppCompatActivity {
     EditText Order_name_input, Customer_input, Month_number_input, day_input, Warranty_input, Payment_input, Performance_input, Other_input;
     Button update_button, delete_button;
 
-    private EditText editText,editText2;
+    private EditText editText,editText2,editText3;
     String id, Order_name, Customer, Month_number, Day_number, Warranty, Payment, Performance, Other;
 
     @Override
@@ -55,6 +56,7 @@ public class UpdateActivity extends AppCompatActivity {
 
         editText = findViewById(R.id.Other_input2);
         editText2 = findViewById(R.id.Order_name_input2);
+        editText3 = findViewById(R.id.Customer_input2);
         //First we call this
         getAndSetIntentData();
 
@@ -96,12 +98,17 @@ public class UpdateActivity extends AppCompatActivity {
         PdfDocument.Page myPage = myPdfDocument.startPage(myPageInfo);
 
         Paint myPaint = new Paint();
-        String myString = editText.getText().toString();
-        int x = 10, y=25;
+        String myString = editText2.getText().toString();
+        String myString2 = editText3.getText().toString();
+        String myString3 = editText.getText().toString();
+        int x = 130, y=25;
         for (String line:myString.split("\n")){
             myPage.getCanvas().drawText(line, x, y, myPaint);
             y+=myPaint.descent()-myPaint.ascent();
         }
+        myPage.getCanvas().drawText("Владелец: " + myString2,10,50,myPaint);
+        myPage.getCanvas().drawText("Информация о заказе: " + myString3,10,75,myPaint);
+
 
         myPdfDocument.finishPage(myPage);
 
@@ -109,6 +116,7 @@ public class UpdateActivity extends AppCompatActivity {
         File myFile = new File(myFilePath);
         try {
             myPdfDocument.writeTo(new FileOutputStream(myFile));
+            Toast.makeText(this, "Данные добавлены в PDF", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e){
             e.printStackTrace();
